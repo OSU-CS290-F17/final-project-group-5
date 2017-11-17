@@ -1,0 +1,26 @@
+Meet the Parents page (Breeder Bunnies Page)
+
+Listing is organized by litter. (includes birth date and breed)
+	Click the litter and it displays all bunnies in that litter.
+		Picture each infant 
+		Comments/description section for each infant (comments posted by seller only here)
+    Clicking on an infant should pull up more detailed information including birth date, breed, and parents.
+    the parents should be a link to the parent's information.
+    X over if sold.
+		Some mark for reserved
+	Comments/description for litter (posted by seller).
+  
+page to view videos of bunnies.
+    display thumbnails, names, and date of upload.
+    clicking thumbnail causes video to open in overlay.
+    Probably use YouTube.
+    
+Blog page
+    dated entry
+    should be able to post pics, and description.
+    
+FAQ page.
+
+Contact info page for seller. 
+
+Also need pages within a login type thing that will allow her add, edit, and remove: bunnies from litters, litters, and blog posts.
