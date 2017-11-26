@@ -23,4 +23,13 @@ FAQ page.
 
 Contact info page for seller. 
 
-Also need pages within a login type thing that will allow her add, edit, and remove: bunnies from litters, litters, and blog posts.
+Also need pages within a login type thing that will allow her add, edit, and remove: bunnies from litters, litters, and blog posts. We don't need to require log in for this. We just need to create pages for it.
+
+Spefic bunny info:
+	All parents except Anne and Jewel are Purebread Holland Lops. Anne is a cross between a Rex and a Flemish Giant. Jewel is a half holland lop half rex-flemish giant.
+	Baby bunny info:
+		Bunnies 1-2 are children of Kirk and Ebony.
+		Bunnnies 3-10 are children of Kirk and Ivy.
+
+
+	
