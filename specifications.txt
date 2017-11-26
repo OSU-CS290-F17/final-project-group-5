@@ -33,5 +33,15 @@ Spefic bunny info:
 		Bunnies 1-2 are children of Kirk and Ebony.
 		Bunnnies 3-10 are children of Kirk and Ivy.
 
-
+Color Scheme:
+	Purple
+	Black
+	Blue
+	White
+	Silver/Grey
+	
+Specifically do not use colors:
+	Brown
+	Orange
+	Yellow
 	
