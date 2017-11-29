@@ -32,6 +32,12 @@ app.get('/faq/', function (req, res) {
   });
 });
 
+app.get('/contact/', function (req, res) {
+  res.status(200).render('contact', {
+    title: 'Bunny Contact'
+  });
+});
+
 app.get('*', function (req, res) {
   res.status(404).render('404', {
     title: "Flop not found!"
