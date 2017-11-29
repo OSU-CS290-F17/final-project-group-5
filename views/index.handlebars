@@ -1,17 +1,5 @@
-<!--
-		<div class="website-header">Tiffany's Lops</div>
-		<div class="website-menu-container">
-			<ul class="website-menu-ul">
-				<li class="website-menu-item"><a href="#">Home</a></li>
-				<li class="website-menu-item"><a href="#">Litters</a></li>
-				<li	class="website-menu-item"><a href="#">Meet the Parents</a></li>
-				<li class="website-menu-item"><a href="#">Blog</a></li>
-				<li class="website-menu-item"><a href="#">Contact</a></li>
-				<li class="website-menu-item"><a href="#">Edit Breeders</a></li>
-				<li class="website-menu-item"><a href="#">Edit Infants</a></li>
-			</ul>
-		</div>
-		<div class="website-page-contents">
-			
-		</div>
--->
+<section id="posts">
+  {{#each posts}}
+  {{> bunny}}
+  {{/each}}
+</section>

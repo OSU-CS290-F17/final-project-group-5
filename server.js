@@ -1,3 +1,4 @@
+var fs = require('fs');
 var path = require('path');
 var express = require('express');
 var exphbs  = require('express-handlebars');
@@ -11,6 +12,8 @@ var hbs = exphbs.create({
   ]
 });
 
+var infantData = JSON.parse(fs.readFileSync('infantData.json', 'utf8'));
+
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
@@ -18,7 +21,8 @@ app.use(express.static('public'));
 
 app.get('/', function (req, res) {
   res.status(200).render('index', {
-    title: "Tiffany's Lops"
+    title: "Tiffany's Lops",
+    posts: infantData
   });
 });
 
