@@ -19,30 +19,41 @@ title {
   text-decoration: none;
   font-size: 25px;
 }
-.navitem{
+/*.navitem{
   margin: 20px;
-}
-ul {
+}*/
+.navlist {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
+    display:block;
 
 }
 
-li {
-    float: left;
+.navitem {
+    margin: 20px;
+    display:inline-block;
 }
 
 li a {
-    display: block;
+    display: inline-block;
     color: white;
     text-align: center;
     padding: 20px;
     text-decoration: none;
 }
 #page-title {
-  font-size: 25px
+  font-size: 25px;
+  text-align:center;
+  background-color:rgb(71, 76, 79);
+  color:white;
+  margin: 0;
+  padding: 20px 0;;
+}
+
+#page-title h1{
+  margin:0;
 }
 
 li a:hover {
