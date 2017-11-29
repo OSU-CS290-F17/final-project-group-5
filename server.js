@@ -13,6 +13,7 @@ var hbs = exphbs.create({
 });
 
 var infantData = JSON.parse(fs.readFileSync('infantData.json', 'utf8'));
+var blogPosts = JSON.parse(fs.readFileSync('blogPosts.json', 'utf8'));
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
@@ -35,6 +36,13 @@ app.get('/faq/', function (req, res) {
 app.get('/contact/', function (req, res) {
   res.status(200).render('contact', {
     title: 'Bunny Contact'
+  });
+});
+
+app.get('/blog/', function (req, res) {
+  res.status(200).render('blog', {
+    title: 'Bunny Blog',
+    bloggers: blogPosts
   });
 });
 
