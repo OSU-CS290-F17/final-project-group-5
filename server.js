@@ -36,7 +36,7 @@ app.use(express.static('public'));
 app.get('/', function (req, res) {
   mongoConnection.collection('babies').find({}).toArray(function(err, docs) {
     if (err) {
-      res.status(500).content('MongoDB failure!');
+      res.status(500).send('MongoDB failure!');
     }
 
     console.log("Found " + docs.length + " babies.");
@@ -47,14 +47,15 @@ app.get('/', function (req, res) {
   });
 });
 
-app.get('/bunny/:bunnyid', function (req, res) {
-  mongoConnection.collection('babies').find({}).toArray(function(err, docs, next) {
+app.get('/bunny/:bunnyid', function (req, res, next) {
+  mongoConnection.collection('babies').find({}).toArray(function(err, docs) {
     if (err) {
       res.status(500).content('MongoDB failure!');
     }
 
     if (!(docs[req.params.bunnyid])) {
       next();
+      return;
     }
 
     console.log("Found " + docs.length + " babies.");
