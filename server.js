@@ -27,7 +27,6 @@ mongoClient.connect(mongoURL, function(err, db) {
     console.log("== Server is listening on port", port);
   });
 });
-var blogPosts = JSON.parse(fs.readFileSync('blogPosts.json', 'utf8'));
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
@@ -79,10 +78,17 @@ app.get('/contact/', function (req, res) {
   });
 });
 
-app.get('/blog/', function (req, res) {
-  res.status(200).render('blog', {
-    title: 'Bunny Blog',
-    bloggers: blogPosts
+app.get('/blog/', function (req, res, next) {
+  mongoConnection.collection('blogPosts').find({}).toArray(function(err, docs) {
+    if (err) {
+      res.status(500).send('MongoDB failure!');
+    }
+
+    console.log("Found " + docs.length + " blog posts.");
+    res.status(200).render('blog', {
+      title: 'Bunny Blog',
+      bloggers: docs
+    });
   });
 });
 
@@ -91,4 +97,3 @@ app.get('*', function (req, res) {
     title: "Flop not found!"
   });
 });
-
