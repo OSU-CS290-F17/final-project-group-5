@@ -129,3 +129,10 @@ section {
 .post-title {
   margin: 5px;
 }
+.blog-post {
+  margin: 30px;
+  padding: 10px;
+  border: 1px solid rgba(0,0,0,.5);
+  border-radius: 20px;
+  background-color: rgb(244, 246, 247);
+}
