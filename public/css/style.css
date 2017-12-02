@@ -1,6 +1,6 @@
 body {
   font-family: 'Montserrat', sans-serif;
-
+  margin: 0px;
 }
 title {
   font-family: 'Montserrat', sans-serif;
@@ -27,13 +27,12 @@ title {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    display:block;
-
+    display: flex;
+  flex-wrap: wrap;
 }
 
 .navitem {
-    margin: 20px;
-    display:inline-block;
+  flex: 1 1 auto;
 }
 
 li a {
