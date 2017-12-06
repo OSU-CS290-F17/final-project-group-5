@@ -38,7 +38,6 @@ app.get('/', function (req, res) {
     if (err) {
       res.status(500).send('MongoDB failure!');
     }
-
     console.log("Found " + docs.length + " babies.");
     res.status(200).render('index', {
       title: "Tiffany's Lops",
@@ -48,21 +47,25 @@ app.get('/', function (req, res) {
 });
 
 app.get('/bunny/:bunnyid', function (req, res, next) {
-  mongoConnection.collection('babies').find({}).toArray(function(err, docs) {
+    mongoConnection.collection('babies').find({}).toArray(function(err, docs) {
     if (err) {
       res.status(500).content('MongoDB failure!');
     }
 
-    if (!(docs[req.params.bunnyid])) {
+    var bun = -1;
+    for(var d in docs){
+        if(docs[d]._id == req.params.bunnyid)
+            bun = d;
+    }
+    if (bun == -1 || !(docs[bun])) {
       next();
       return;
     }
-
     console.log("Found " + docs.length + " babies.");
-    res.status(200).render('index', {
+    res.status(200).render('bunnyDets', {
       title: "Tiffany's Lops",
-      posts: [docs[req.params.bunnyid]]
-    });
+      posts: [docs[bun]]
+     });
   });
 });
 
