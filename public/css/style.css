@@ -150,20 +150,17 @@ section {
   display: block;
   height: 150px;
   width: 300px;
-  border: solid 1px;
   border-radius: 5px;
 }
 #blog-title-input {
   display: block;
   align-items: center;
-  border: solid 1px;
   border-radius: 5px;
   resize: none;
 }
 #blog-date-input {
   display: block;
   align-items: center;
-  border: solid 1px;
   border-radius: 5px;
   resize: none;
 }
