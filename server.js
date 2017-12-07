@@ -81,7 +81,7 @@ app.get('/contact/', function (req, res) {
 });
 
 app.get('/blog/', function (req, res, next) {
-  mongoConnection.collection('blogPosts').find({}).toArray(function(err, docs) {
+  mongoConnection.collection('blogPosts').find({}).sort({date: -1}).toArray(function(err, docs) {
     if (err) {
       res.status(500).send('MongoDB failure!');
     }
