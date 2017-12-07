@@ -71,9 +71,6 @@ function handleBlogAccept(){
     }
 }
 
-
-
-
 window.addEventListener('DOMContentLoaded', function () {
     var blogCancelButton = document.getElementById('blog-cancel');
     var blogAcceptButton = document.getElementById('blog-accept');
