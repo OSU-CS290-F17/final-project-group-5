@@ -94,7 +94,7 @@ app.get('/blog/', function (req, res, next) {
   });
 });
 
-app.post('/blog', function(req, res, next){
+app.post('/blog', function(req, res){
   
     if(req.body && req.body.blogTitle && req.body.blogBody && req.body.blogDate){
       console.log("== Client added a blog post containing:");

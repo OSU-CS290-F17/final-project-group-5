@@ -147,26 +147,23 @@ section {
   margin: 15px;
 }
 #blog-body-input {
-  display: flex;
+  display: block;
   height: 150px;
   width: 300px;
-  border: solid, 1px;
+  border: solid 1px;
   border-radius: 5px;
-  resize: none;
 }
 #blog-title-input {
-  display: flex;
+  display: block;
   align-items: center;
-  flex: 6 200px;
-  border: solid, 1px;
+  border: solid 1px;
   border-radius: 5px;
   resize: none;
 }
 #blog-date-input {
-  display: flex;
+  display: block;
   align-items: center;
-  flex: 6 200px;
-  border: solid, 1px;
+  border: solid 1px;
   border-radius: 5px;
   resize: none;
 }
