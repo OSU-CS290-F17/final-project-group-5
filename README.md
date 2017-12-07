@@ -38,7 +38,7 @@ The Parents page will house the bunny parents and their information
 
 #### Blog Page 
 
-* ~~Add ~~/ remove posts?
+* ~~Add~~ / remove posts?
 * Posts with images
 
 
