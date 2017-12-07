@@ -135,3 +135,38 @@ section {
   border-radius: 20px;
   background-color: rgb(244, 246, 247);
 }
+.blog-edit-container {
+  max-width: 500px;
+  margin: 30px;
+  padding: 10px;
+  border: 1px solid rgba(0,0,0,.5);
+  border-radius: 20px;
+  background-color: rgb(244, 246, 247);
+}
+.blog-text-input {
+  margin: 15px;
+}
+#blog-body-input {
+  display: flex;
+  height: 150px;
+  width: 300px;
+  border: solid, 1px;
+  border-radius: 5px;
+  word-wrap: break-word;
+}
+#blog-title-input {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  flex: 6 200px;
+  border: solid, 1px;
+  border-radius: 5px;
+}
+#blog-date-input {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  flex: 6 200px;
+  border: solid, 1px;
+  border-radius: 5px;
+}

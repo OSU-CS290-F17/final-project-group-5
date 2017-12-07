@@ -1,6 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
+var bodyParser = require('body-parser');
 var express = require('express');
 var exphbs  = require('express-handlebars');
 var app = express();
@@ -32,6 +33,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
   mongoConnection.collection('babies').find({}).toArray(function(err, docs) {
@@ -91,6 +93,37 @@ app.get('/blog/', function (req, res, next) {
     });
   });
 });
+
+app.post('/blog', function(req, res, next){
+  
+    if(req.body && req.body.blogTitle && req.body.blogBody && req.body.blogDate){
+      console.log("== Client added a blog post containing:");
+      console.log("== title:", req.body.blogTitle);
+      console.log("== info:", req.body.blogBody);
+      console.log("== date:", req.body.blogDate);
+  
+      var blogCollection = mongoConnection.collection('blogPosts');
+    
+      blogCollection.insertOne(
+        {date: req.body.blogDate,
+        info: req.body.blogBody,
+        postTitle: req.body.blogTitle
+        },
+        function(err, result){
+          if(err){
+            res.status(500).send("Error");
+          }
+          else{
+            res.status(200).send("Success");
+          }
+        }
+      );
+    } 
+    else{
+    res.status(400).send("Request body needs all fields");
+    }
+  });
+
 
 app.get('*', function (req, res) {
   res.status(404).render('404', {
