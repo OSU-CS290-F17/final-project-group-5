@@ -9,7 +9,7 @@ Pages:
 * Litters
 * Meet the Parents
 * Edit Breeders and Edit Infants
-* Edit Blog page?
+* ~~Edit Blog page~~
 
 Home page will be different from right now. Bunnies will be placed on respective Litter/Parent section
 
@@ -38,7 +38,7 @@ The Parents page will house the bunny parents and their information
 
 #### Blog Page 
 
-* Add / remove posts
+* ~~Add ~~/ remove posts?
 * Posts with images
 
 
