@@ -1,6 +1,4 @@
-
 function createBlogPost(title, date, info){
-
 
     var blogPostArgs = {
         postTitle: title,
@@ -20,7 +18,7 @@ function updateProgress (event) {
     } else {
       console.log("WTF");
     }
-  }
+}
 
 function resetInputs(){
     var blogTitle = document.getElementById('blog-title-input').value = '';
