@@ -62,7 +62,7 @@ function handleBlogAccept(){
                 var newBlogPost = createBlogPost(blogTitle, blogDate, blogBody);
                 var postContainer = document.querySelector('.blog');
 
-                postContainer.insertAdjacentHTML('beforeend', newBlogPost);
+                postContainer.insertAdjacentHTML('afterbegin', newBlogPost);
                 resetInputs();
             }
         });
