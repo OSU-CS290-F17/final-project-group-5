@@ -6,5 +6,30 @@
     <div>
       <strong>{{name}}</strong>
     </div>
+	  {{#if birthdate}}
+	    <div>
+          Birthdate: {{birthdate}}
+	    </div>
+	  {{/if}}
+	  {{#if father}}
+        <div>
+          Father: <a href="/breeder/{{father}}">{{fatherName}}</a>
+        </div>
+      {{/if}}
+	  {{#if mother}}
+        <div>
+          Mother: <a href="/breeder/{{mother}}">{{motherName}}</a>
+        </div>
+      {{/if}}
+	  {{#if breed}}
+        <div>
+          Breed: {{breed}}</a>
+        </div>
+      {{/if}}
+	  {{#if longDescription}}
+        <p>
+          {{longDescription}}</a>
+        </p>
+      {{/if}}
   </div>
 </div>
