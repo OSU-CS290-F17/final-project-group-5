@@ -6,5 +6,10 @@
     <div class="post-info-container">
       <a href="/bunny/{{_id}}" class="post-title">{{description}}</a> <span class="post-price">${{price}}</span>
     </div>
+    {{#unless available}}
+    <div class="overlay">
+      <div class="overlay-text">Not Available</div>
+    </div>
+    {{/unless}}
   </div>
 </div>

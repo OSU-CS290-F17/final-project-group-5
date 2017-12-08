@@ -95,6 +95,7 @@ section {
   border: solid 2px;
   border-radius: 5px;
   margin: 5px;
+  position:relative;
 }
 .post-contents {
 
@@ -253,7 +254,6 @@ footer {
   font-size: 2em;
   background-color: #ff9999;
 }
-
 .bunny-edit-container {
   background-color: #F4F6F7;
   border-radius: 15px;
@@ -271,4 +271,28 @@ footer {
 .bunny-edit-footer {
   margin-top: 10px;
 
+#buy-bunny-button {
+  border-radius: 15px;
+  border: solid 2px;
+  margin: 10px;
+  height: 45px;
+  font-size: 2em;
+  background-color: #99ff99;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 9999;
+  color: white;
+}
+.overlay-text {
+  display: block;
+  padding: 50px;
+  font-size: 2em;
+  font-weight:bold;
+  text-align: center;
 }
