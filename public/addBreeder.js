@@ -31,10 +31,11 @@ function handleBreederAccept(){
     var requestBody = JSON.stringify(bunObj);
 
     postRequest.setRequestHeader('Content-Type', 'application/json');
-
     postRequest.addEventListener('load', function(event){
       if(event.target.status !== 200){
         alert("Error uploading new breeder to DB: " + event.target.response);
+      } else {
+        alert("Sent!");
       }
     });
 
@@ -44,4 +45,5 @@ function handleBreederAccept(){
 
 window.addEventListener('DOMContentLoaded', function () {
   var bunnyAcceptButton = document.getElementById('bunny-accept');
+  bunnyAcceptButton.addEventListener('click', handleBreederAccept);
 });

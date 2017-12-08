@@ -179,7 +179,7 @@ app.get('/addBreeder/', function (req, res) {
 
 app.post('/addBreeder', function(req, res){
 
-  if(req.body && req.body.blogTitle && req.body.blogBody && req.body.blogDate){
+  if (req.body) {
     console.log("== Client added a breeder containing:");
     console.log("== name:", req.body.name);
     console.log("== birthdate:", req.body.birthdate);
@@ -194,14 +194,14 @@ app.post('/addBreeder', function(req, res){
 
     breederCollection.insertOne(
       {
-        name: name,
-        birthdate: birthdate,
-        image: image,
-        longDescription: description,
-        mother: mother,
-        father: father,
-        isCurrent: isCurrent,
-        breed: breed
+        name: req.body.name,
+        birthdate: req.body.birthdate,
+        image: req.body.image,
+        longDescription: req.body.description,
+        mother: req.body.mother,
+        father: req.body.father,
+        isCurrent: req.body.isCurrent,
+        breed: req.body.breed
       },
       function(err, result){
         if(err){
