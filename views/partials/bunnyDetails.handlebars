@@ -4,6 +4,11 @@
   <div class="detail-image-container">
     <img class="detail-image" src="{{image}}" alt="{{description}}">
   </div>
+  {{#unless available}}
+  <div class="detail-info-container">
+    <strong>Not Available</strong>
+  </div>
+    {{/unless}}
   <div class="detail-info-container">
     <a href="#" class="post-title">{{description}}</a> <span class="post-price">${{price}}</span>
   </div>

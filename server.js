@@ -122,7 +122,8 @@ app.get('/bunny/:bunnyid', function (req, res, next) {
 				mother: docs[0].mother,
 				birthdate: docs[0].birthdate,
 				fatherName: fatherName,
-				motherName: motherName
+				motherName: motherName,
+				available: docs[0].available
 
 			});
 		});
