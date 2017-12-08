@@ -89,16 +89,16 @@ app.get('/bunny/:bunnyid', function (req, res, next) {
 });
 
 app.get('/breeder/', function(req, res, next) {
-    mongoConnection.collection('breeders').find({}).toArray(function(err, docs){
-        if(err) {
-            res.status(500).content('MongoDB failure!');
-	}
-	console.log("Found " + docs.length + " breeders.");
-	res.status(200).render('breeders', {
-	    title: "Tiffany's Lops",
-	    posts: docs
-      	});
+  mongoConnection.collection('breeders').find({}).toArray(function(err, docs){
+    if(err) {
+      res.status(500).content('MongoDB failure!');
+    }
+    console.log("Found " + docs.length + " breeders.");
+    res.status(200).render('breeders', {
+      title: "Tiffany's Lops",
+      posts: docs
     });
+  });
 });
 
 app.get('/breeder/:bunnyid', function(req, res, next) {
@@ -164,6 +164,112 @@ app.get('/blog/', function (req, res, next) {
   });
 });
 
+app.get('/addBreeder/', function (req, res) {
+  mongoConnection.collection('breeders').find({}).toArray(function(err, docs){
+    if(err) {
+      res.status(500).content('MongoDB failure!');
+    }
+    console.log("Found " + docs.length + " breeders.");
+    res.status(200).render('addBreeder', {
+      title: 'Add Bunny Breeder',
+      parents: docs
+    });
+  });
+});
+
+app.post('/addBreeder', function(req, res){
+
+  if (req.body) {
+    console.log("== Client added a breeder containing:");
+    console.log("== name:", req.body.name);
+    console.log("== birthdate:", req.body.birthdate);
+    console.log("== image:", req.body.image);
+    console.log("== description:", req.body.description);
+    console.log("== mother:", req.body.mother);
+    console.log("== father:", req.body.father);
+    console.log("== isCurrent:", req.body.isCurrent);
+    console.log("== breed:", req.body.breed);
+
+    var breederCollection = mongoConnection.collection('breeders');
+
+    breederCollection.insertOne(
+      {
+        name: req.body.name,
+        birthdate: req.body.birthdate,
+        image: req.body.image,
+        longDescription: req.body.description,
+        mother: req.body.mother,
+        father: req.body.father,
+        isCurrent: req.body.isCurrent,
+        breed: req.body.breed
+      },
+      function(err, result){
+        if(err){
+          res.status(500).send("Error");
+        }
+        else{
+          res.status(200).send("Success");
+        }
+      }
+    );
+  }
+  else{
+    res.status(400).send("Request body needs all fields");
+  }
+});
+
+app.post('/addInfant', function(req, res){
+
+  if (req.body) {
+    console.log("== Client added an infant containing:");
+    console.log("== price:", req.body.price);
+    console.log("== birthdate:", req.body.birthdate);
+    console.log("== image:", req.body.image);
+    console.log("== shortdescription:", req.body.shortdescription);
+    console.log("== longdescription:", req.body.longdescription);
+    console.log("== mother:", req.body.mother);
+    console.log("== father:", req.body.father);
+
+    var infantCollection = mongoConnection.collection('babies');
+
+    infantCollection.insertOne(
+      {
+        price: req.body.price,
+        birthdate: req.body.birthdate,
+        image: req.body.image,
+        description: req.body.shortdescription,
+        longDescription: req.body.longdescription,
+        mother: req.body.mother,
+        father: req.body.father,
+      },
+      function(err, result){
+        if(err){
+          res.status(500).send("Error");
+        }
+        else{
+          res.status(200).send("Success");
+        }
+      }
+    );
+  }
+  else{
+    res.status(400).send("Request body needs all fields");
+  }
+});
+
+app.get('/addInfant/', function (req, res) {
+  mongoConnection.collection('breeders').find({}).toArray(function(err, docs){
+    if(err) {
+      res.status(500).content('MongoDB failure!');
+    }
+    console.log("Found " + docs.length + " breeders.");
+    res.status(200).render('addInfant', {
+      title: 'Add Bunny Infant',
+      parents: docs
+    });
+  });
+});
+
 app.delete('/blog', function(req, res){
   console.log(req.body.id)
   if(req.body && req.body.id){
@@ -187,34 +293,33 @@ app.delete('/blog', function(req, res){
 
 app.post('/blog', function(req, res){
 
-    if(req.body && req.body.blogTitle && req.body.blogBody && req.body.blogDate){
-      console.log("== Client added a blog post containing:");
-      console.log("== title:", req.body.blogTitle);
-      console.log("== info:", req.body.blogBody);
-      console.log("== date:", req.body.blogDate);
+  if(req.body && req.body.blogTitle && req.body.blogBody && req.body.blogDate){
+    console.log("== Client added a blog post containing:");
+    console.log("== title:", req.body.blogTitle);
+    console.log("== info:", req.body.blogBody);
+    console.log("== date:", req.body.blogDate);
 
-      var blogCollection = mongoConnection.collection('blogPosts');
+    var blogCollection = mongoConnection.collection('blogPosts');
 
-      blogCollection.insertOne(
-        {date: req.body.blogDate,
+    blogCollection.insertOne(
+      {date: req.body.blogDate,
         info: req.body.blogBody,
         postTitle: req.body.blogTitle
-        },
-        function(err, result){
-          if(err){
-            res.status(500).send("Error");
-          }
-          else{
-            res.status(200).send("Success");
-          }
+      },
+      function(err, result){
+        if(err){
+          res.status(500).send("Error");
         }
-      );
-    }
-    else{
+        else{
+          res.status(200).send("Success");
+        }
+      }
+    );
+  }
+  else{
     res.status(400).send("Request body needs all fields");
-    }
-  });
-
+  }
+});
 
 app.get('*', function (req, res) {
   res.status(404).render('404', {

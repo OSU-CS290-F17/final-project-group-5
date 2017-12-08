@@ -1,0 +1,43 @@
+<script src="/addInfant.js" defer></script>
+<section class="bunny-edit-container">
+  <h4 class="bunny-edit-title">Add new infant</h4>
+  <div class="bunny-text-input">
+    <label>Price:</label>
+    <input type="number" name="price" id="bunny-short-input"></input>
+  </div>
+  <div class="bunny-text-input">
+    <label>Birthdate:</label>
+    <textarea name="date" id="bunny-short-input"></textarea>
+  </div>
+  <div class="bunny-text-input">
+    <label>image URL:</label>
+    <textarea name="image" id="bunny-short-input"></textarea>
+  </div>
+  <div class="bunny-text-input">
+    <label>Short Description:</label>
+    <textarea name="short-description" id="bunny-short-input"></textarea>
+  </div>
+  <div class="bunny-text-input">
+    <label>Long Description:</label>
+    <textarea name="long-description" id="bunny-long-input"></textarea>
+  </div>
+  <div class="bunny-text-input">
+    <label>Father:</label>
+    <select name="father">
+      {{#each parents}}
+      <option value="{{_id}}">{{name}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="bunny-text-input">
+    <label>Mother:</label>
+    <select name="mother">
+      {{#each parents}}
+      <option value="{{_id}}">{{name}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="bunny-edit-footer">
+    <button type="button" id="bunny-accept">Create New Infant</button>
+  </div>
+</section>
