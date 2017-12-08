@@ -216,3 +216,19 @@ footer {
   border-radius: 10px;
   margin: 20px;
 }
+.bunny-text-input {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 2px auto;
+}
+.bunny-edit-title {
+  font-size: 3em;
+  text-align: center;
+}
+#bunny-long-input {
+  min-height: 300px;
+}
+.bunny-edit-footer {
+  text-align: center;
+}
