@@ -6,12 +6,12 @@
 
 Pages:
 
-* Litters
-* Meet the Parents
+* ~~Litters~~
+* ~~Meet the Parents~~
 * Edit Breeders and Edit Infants
 * ~~Edit Blog page~~
 
-Home page will be different from right now. Bunnies will be placed on respective Litter/Parent section
+~~Home page will be different from right now. Bunnies will be placed on respective Litter/Parent section~~
 
 #### Litter Page
 The Litter page will have the listings of the bunny litters.
@@ -23,7 +23,7 @@ Each litter will have a comment/description section for the seller to write abou
   * breed
   * X over bunnies that are sold
   * A mark for reserved bunnies
-  * Link to parents
+  * parents
   
   
 
@@ -38,7 +38,7 @@ The Parents page will house the bunny parents and their information
 
 #### Blog Page 
 
-* ~~Add~~ / remove posts?
+* ~~Add~~ / ~~remove posts~~
 * Posts with images
 
 
@@ -55,14 +55,4 @@ The Parents page will house the bunny parents and their information
 
 #### Contact page 
 
-* Styling to match other pages
-
-
-
-##### Unknown
-
-* separate pages for editing other pages OR incorporate modals into the respective page
-* Video page
-* 
-
-
+* ~~Styling to match other pages~~
