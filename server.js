@@ -5,7 +5,7 @@ var express = require('express');
 var exphbs  = require('express-handlebars');
 var app = express();
 var port = process.env.PORT || 3000;
-
+var mongodb = require('mongodb');
 var mongoClient = require('mongodb').MongoClient;
 var mongoURL = process.env.MONGO_URL || 'mongodb://cs290_frederij:apple@classmongo.engr.oregonstate.edu/cs290_frederij';
 var mongoConnection;
@@ -47,17 +47,12 @@ app.get('/', function (req, res) {
 });
 
 app.get('/bunny/:bunnyid', function (req, res, next) {
-    mongoConnection.collection('babies').find({}).toArray(function(err, docs) {
+    mongoConnection.collection('babies').find({_id: mongodb.ObjectID(req.params.bunnyid)}).toArray(function(err, docs) {
     if (err) {
       res.status(500).content('MongoDB failure!');
     }
 
-    var bun = -1;
-    for(var d in docs){
-        if(docs[d]._id == req.params.bunnyid)
-            bun = d;
-    }
-    if (bun == -1 || !(docs[bun])) {
+    if (!(docs[0])) {
       next();
       return;
     }
@@ -85,27 +80,22 @@ app.get('/breeder/', function(req, res, next) {
 });
 
 app.get('/breeder/:bunnyid', function(req, res, next) {
-  mongoConnection.collection('breeders').find({}).toArray(function(err, docs){
-    if(err) {
-      res.status(500).content('MongoDB failure!');
-    }
-    var bun = -1;
-    for(var d in docs){
-      if(docs[d]._id == req.params.bunnyid)
-        bun = d;
-    }
-    if(bun == -1 || !(docs[bun])){
-      next();
-      return;
-    }
+	mongoConnection.collection('breeders').find({_id: mongodb.ObjectID(req.params.bunnyid)}).toArray(function(err, docs){
+		if(err) {
+			res.status(500).content('MongoDB failure!');
+		}
+		if(!(docs[0])){
+			next();
+			return;
+		}
 
-    console.log("Found " + docs.length + " breeders");
-    res.status(200).render('breederDets', {
-      title: "Tiffany's Lops",
-      image: docs[bun].image,
-      name: docs[bun].name
-    });
-  });
+		console.log("Found " + docs.length + " breeders");
+		res.status(200).render('breederDets', {
+			title: "Tiffany's Lops",
+			image: docs[bun].image,
+			name: docs[bun].name
+		});
+	});
 });
 
 app.get('/faq/', function (req, res) {
