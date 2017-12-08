@@ -11,14 +11,6 @@ function createBlogPost(title, date, info){
     return blogPostHTML;
 }
 
-function updateProgress (event) {
-    if (event.lengthComputable) {
-      var percentComplete = event.loaded / event.total;
-      console.log(percentComplete, "this much")
-    } else {
-      console.log("WTF");
-    }
-}
 
 function resetInputs(){
     var blogTitle = document.getElementById('blog-title-input').value = '';
@@ -26,6 +18,36 @@ function resetInputs(){
     var blogDate = document.getElementById('blog-date-input').value = '';
 }
 
+function handleDeletePost(event){
+    
+    var postToDelete = event.currentTarget.parentNode;
+    
+    var deleteRequest = new XMLHttpRequest();
+    var deleteURL = '/blog';
+    deleteRequest.open('DELETE', deleteURL);
+    console.log(postToDelete.dataset.id);
+
+    var delObj = {
+        id: postToDelete.dataset.id
+    };
+
+    var requestBody = JSON.stringify(delObj);
+
+    deleteRequest.setRequestHeader('Content-type', 'application/json');
+    deleteRequest.addEventListener('load', function(event){
+        if(event.target.status !== 200){
+            alert("Error deleting blog post to DB: " + event.target.response);
+        }
+        else{
+            var postContainer = postToDelete.parentNode;
+            postContainer.removeChild(postToDelete);
+            console.log("things happened");
+        }
+    });
+
+    deleteRequest.send(requestBody);
+
+}
 
 function handleBlogAccept(){
 
@@ -72,8 +94,12 @@ function handleBlogAccept(){
 }
 
 window.addEventListener('DOMContentLoaded', function () {
+    var deleteButtons = document.getElementsByClassName('delete-blog-post');
     var blogCancelButton = document.getElementById('blog-cancel');
     var blogAcceptButton = document.getElementById('blog-accept');
     blogAcceptButton.addEventListener('click', handleBlogAccept);
     blogCancelButton.addEventListener('click', resetInputs);
+    for (var i = 0; i < deleteButtons.length; i++) {
+        deleteButtons[i].addEventListener('click', handleDeletePost);
+    }
 });

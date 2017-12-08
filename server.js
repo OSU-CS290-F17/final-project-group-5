@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var exphbs  = require('express-handlebars');
 var app = express();
+var ObjectId = require('mongodb').ObjectID;
 var port = process.env.PORT || 3000;
 
 var mongoClient = require('mongodb').MongoClient;
@@ -92,6 +93,27 @@ app.get('/blog/', function (req, res, next) {
       bloggers: docs
     });
   });
+});
+
+app.delete('/blog', function(req, res){
+  console.log(req.body.id)
+  if(req.body && req.body.id){
+    var blogCollection = mongoConnection.collection('blogPosts');
+
+    blogCollection.deleteOne( 
+      { "_id" : ObjectId(req.body.id) },
+      function(err, result){
+        if(err){
+          res.status(500).send("Error");
+        }
+        else{
+          res.status(200).send("Success");
+        }
+    });
+  }
+  else{
+    res.status(400).send("Something went wrong");    
+  }
 });
 
 app.post('/blog', function(req, res){

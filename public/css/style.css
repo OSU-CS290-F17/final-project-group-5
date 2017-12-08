@@ -164,3 +164,7 @@ section {
   border-radius: 5px;
   resize: none;
 }
+.delete-blog-post{
+  display: block;
+  border-radius: 5px;
+}
