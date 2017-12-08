@@ -48,9 +48,13 @@ li a {
   background-color:rgb(71, 76, 79);
   color:white;
   margin: 0;
-  padding: 20px 0;;
-}
+  padding: 20px 0;
+  /*margin-bottom: 20px;*/
 
+}
+#image-container {
+  padding-top: 20px;
+}
 #page-title h1{
   margin:0;
 }
