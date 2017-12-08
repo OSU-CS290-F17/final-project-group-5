@@ -17,7 +17,7 @@ function handleBreederAccept(){
     postRequest.open('post', postURL);
 
     var bunObj = {
-      price: price.value,
+      price: parseInt(price.value),
       birthdate: birthdate.value,
       image: image.value,
       shortdescription: shortdescription.value,
