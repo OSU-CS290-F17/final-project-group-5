@@ -64,7 +64,9 @@ app.get('/bunny/:bunnyid', function (req, res, next) {
     console.log("Found " + docs.length + " babies.");
     res.status(200).render('bunnyDets', {
       title: "Tiffany's Lops",
-      posts: [docs[bun]]
+      price: docs[bun].price,
+      image: docs[bun].image,
+      description: docs[bun].longDescription,
      });
   });
 });
@@ -83,26 +85,27 @@ app.get('/breeder/', function(req, res, next) {
 });
 
 app.get('/breeder/:bunnyid', function(req, res, next) {
-    mongoConnection.collection('breeders').find({}).toArray(function(err, docs){
-        if(err) {
-            res.status(500).content('MongoDB failure!');
-	}
-	var bun = -1;
-	for(var d in docs){
-            if(docs[d]._id == req.params.bunnyid)
-		bun = d;
-	}
-	if(bun == -1 || !(docs[bun])){
-            next();
-	    return;
-	}
+  mongoConnection.collection('breeders').find({}).toArray(function(err, docs){
+    if(err) {
+      res.status(500).content('MongoDB failure!');
+    }
+    var bun = -1;
+    for(var d in docs){
+      if(docs[d]._id == req.params.bunnyid)
+        bun = d;
+    }
+    if(bun == -1 || !(docs[bun])){
+      next();
+      return;
+    }
 
-	console.log("Found " + docs.length + " breeders");
-        res.status(200).render('breederDets', {
-            title: "Tiffany's Lops",
-	    posts: [docs[bun]]
-	});
+    console.log("Found " + docs.length + " breeders");
+    res.status(200).render('breederDets', {
+      title: "Tiffany's Lops",
+      image: docs[bun].image,
+      name: docs[bun].name
     });
+  });
 });
 
 app.get('/faq/', function (req, res) {
