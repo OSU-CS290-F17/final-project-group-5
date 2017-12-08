@@ -232,3 +232,11 @@ footer {
 .bunny-edit-footer {
   text-align: center;
 }
+#delete-bunny-button {
+  border-radius: 15px;
+  border: solid 2px;
+  margin: 10px;
+  height: 45px;
+  font-size: 2em;
+  background-color: #ff9999;
+}
