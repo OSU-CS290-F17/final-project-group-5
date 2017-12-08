@@ -59,12 +59,31 @@ app.get('/bunny/:bunnyid', function (req, res, next) {
       next();
       return;
     }
-    console.log("Found " + docs.length + " babies.");
-    res.status(200).render('bunnyDets', {
-      title: "Tiffany's Lops",
-      price: docs[0].price,
-      image: docs[0].image,
-      description: docs[0].longDescription,
+	var fatherName = null;
+	var motherName = null;
+	mongoConnection.collection('breeders').find({_id: mongodb.ObjectID((docs[0].father != '' ? docs[0].father : '111111111111111111111111'))}).toArray(function(err, father){
+			if(father[0]){
+				fatherName = father[0].name;
+			}
+			mongoConnection.collection('breeders').find({_id: mongodb.ObjectID((docs[0].mother != '' ? docs[0].mother : '111111111111111111111111'))}).toArray(function(err, mother){
+				if(mother[0]){
+					motherName = mother[0].name;
+				}
+   				 console.log("Found " + docs.length + " babies.");
+   				 res.status(200).render('bunnyDets', {
+      			title: "Tiffany's Lops",
+      			price: docs[0].price,
+      			image: docs[0].image,
+				description: docs[0].description,
+      			longDescription: docs[0].longDescription,
+				father: docs[0].father,
+				mother: docs[0].mother,
+				birthdate: docs[0].birthdate,
+				fatherName: fatherName,
+				motherName: motherName
+
+			});
+		});
      });
   });
 });
@@ -91,12 +110,30 @@ app.get('/breeder/:bunnyid', function(req, res, next) {
 			next();
 			return;
 		}
-
-		console.log("Found " + docs.length + " breeders");
-		res.status(200).render('breederDets', {
-			title: "Tiffany's Lops",
-			image: docs[0].image,
-			name: docs[0].name
+		var fatherName = null;
+		var motherName = null;
+			mongoConnection.collection('breeders').find({_id: mongodb.ObjectID((docs[0].father != '' ? docs[0].father : '111111111111111111111111'))}).toArray(function(err, father){
+				if(father[0]){
+					fatherName = father[0].name;
+				}
+				mongoConnection.collection('breeders').find({_id: mongodb.ObjectID((docs[0].mother != '' ? docs[0].mother : '111111111111111111111111'))}).toArray(function(err, mother){
+				if(mother[0]){
+					motherName = mother[0].name;
+				}
+				console.log("Found " + docs.length + " breeders");
+				res.status(200).render('breederDets', {
+					title: "Tiffany's Lops",
+					image: docs[0].image,
+					name: docs[0].name,
+					father: docs[0].father,
+					mother: docs[0].mother,
+					birthdate: docs[0].birthdate,
+					longDescription: docs[0].longDescription,
+					breed: docs[0].breed,
+					motherName: motherName,
+					fatherName: fatherName
+				});
+			});
 		});
 	});
 });
