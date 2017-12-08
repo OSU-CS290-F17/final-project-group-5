@@ -218,9 +218,55 @@ app.post('/addBreeder', function(req, res){
   }
 });
 
+app.post('/addInfant', function(req, res){
+
+  if (req.body) {
+    console.log("== Client added an infant containing:");
+    console.log("== price:", req.body.price);
+    console.log("== birthdate:", req.body.birthdate);
+    console.log("== image:", req.body.image);
+    console.log("== shortdescription:", req.body.shortdescription);
+    console.log("== longdescription:", req.body.longdescription);
+    console.log("== mother:", req.body.mother);
+    console.log("== father:", req.body.father);
+
+    var infantCollection = mongoConnection.collection('babies');
+
+    infantCollection.insertOne(
+      {
+        price: req.body.price,
+        birthdate: req.body.birthdate,
+        image: req.body.image,
+        description: req.body.shortdescription,
+        longDescription: req.body.longdescription,
+        mother: req.body.mother,
+        father: req.body.father,
+      },
+      function(err, result){
+        if(err){
+          res.status(500).send("Error");
+        }
+        else{
+          res.status(200).send("Success");
+        }
+      }
+    );
+  }
+  else{
+    res.status(400).send("Request body needs all fields");
+  }
+});
+
 app.get('/addInfant/', function (req, res) {
-  res.status(200).render('addInfant', {
-    title: 'Add Bunny Infant'
+  mongoConnection.collection('breeders').find({}).toArray(function(err, docs){
+    if(err) {
+      res.status(500).content('MongoDB failure!');
+    }
+    console.log("Found " + docs.length + " breeders.");
+    res.status(200).render('addInfant', {
+      title: 'Add Bunny Infant',
+      parents: docs
+    });
   });
 });
 
