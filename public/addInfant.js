@@ -1,17 +1,21 @@
-function handleBreederAccept(){
+function handleInfantAccept(){
 
-  var price       = document.querySelectorAll('[name=price]')[0]
-  var birthdate   = document.querySelectorAll('[name=date]')[0]
-  var image       = document.querySelectorAll('[name=image]')[0]
-  var shortdescription = document.querySelectorAll('[name=short-description]')[0]
-  var longdescription = document.querySelectorAll('[name=long-description]')[0]
-  var mother      = document.querySelectorAll('[name=mother]')[0]
-  var father      = document.querySelectorAll('[name=father]')[0]
+  var price       = document.querySelectorAll('[name=price]')[0];
+  var birthdate   = document.querySelectorAll('[name=date]')[0];
+  var image       = document.querySelectorAll('[name=image]')[0];
+  var shortdescription = document.querySelectorAll('[name=short-description]')[0];
+  var longdescription = document.querySelectorAll('[name=long-description]')[0];
+  var mother      = document.querySelectorAll('[name=mother]')[0];
+  var father      = document.querySelectorAll('[name=father]')[0];
 
-  if(!birthdate || !image || !price || !longdescription || !shortdescription){
+  if (
+    birthdate.value == "" ||
+    image.value == "" ||
+    price.value == "" ||
+    longdescription.value == "" ||
+    shortdescription.value == "") {
     alert("You must input all required fields!");
-  }
-  else{
+  } else {
     var postRequest = new XMLHttpRequest();
     var postURL = '/addInfant';
     postRequest.open('post', postURL);
@@ -43,5 +47,5 @@ function handleBreederAccept(){
 
 window.addEventListener('DOMContentLoaded', function () {
   var bunnyAcceptButton = document.getElementById('bunny-accept');
-  bunnyAcceptButton.addEventListener('click', handleBreederAccept);
+  bunnyAcceptButton.addEventListener('click', handleInfantAccept);
 });

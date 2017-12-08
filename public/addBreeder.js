@@ -9,7 +9,11 @@ function handleBreederAccept(){
   var isCurrent   = document.querySelectorAll('[name=iscurrent]')[0]
   var breed       = document.querySelectorAll('[name=breed]')[0]
 
-  if(!name || !birthdate || !image || !breed){
+  if(name.value == "" ||
+     birthdate.value == "" ||
+     image.value == "" ||
+     description.value == "" ||
+     breed.value == ""){
     alert("You must input all required fields!");
   }
   else{
