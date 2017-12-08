@@ -20,6 +20,7 @@
   <div class="bunny-text-input">
     <label>Father:</label>
     <select name="father">
+      <option value="">None</option>
       {{#each parents}}
       <option value="{{_id}}">{{name}}</option>
       {{/each}}
@@ -28,6 +29,7 @@
   <div class="bunny-text-input">
     <label>Mother:</label>
     <select name="mother">
+      <option value="">None</option>
       {{#each parents}}
       <option value="{{_id}}">{{name}}</option>
       {{/each}}
