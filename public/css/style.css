@@ -296,3 +296,9 @@ footer {
   font-weight:bold;
   text-align: center;
 }
+.overlay-text:link {
+  color: white;
+}
+.overlay-text:visited {
+  color: white;
+}
