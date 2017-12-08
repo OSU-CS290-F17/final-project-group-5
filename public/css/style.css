@@ -173,7 +173,13 @@ section {
 }
 .delete-blog-post{
   display: block;
+  position: relative;
+  left: 95%;
   border-radius: 5px;
+  border: 1px solid rgb(192, 186, 186);
+}
+.delete-blog-post:hover{
+  border-color:black;
 }
 footer {
   position: relative;
@@ -182,10 +188,9 @@ footer {
   height: 100px;
   text-align: center;
 }
-
 #footer {
   margin-top: 10px;
   color: white;
   text-decoration: none;
-
 }
+
