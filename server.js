@@ -49,6 +49,48 @@ app.get('/', function (req, res) {
   });
 });
 
+app.delete('/breeder/:bunnyid', function(req, res){
+    console.log(req.body.id)
+    if(req.body && req.body.id){
+      var blogCollection = mongoConnection.collection('breeders');
+  
+      blogCollection.deleteOne(
+        { "_id" : ObjectId(req.body.id) },
+        function(err, result){
+          if(err){
+            res.status(500).send("Error");
+          }
+          else{
+            res.status(200).send("Success");
+          }
+      });
+    }
+    else{
+      res.status(400).send("Something went wrong");
+    }
+  });
+
+app.delete('/bunny/:bunnyid', function(req, res){
+    console.log(req.body.id)
+    if(req.body && req.body.id){
+      var blogCollection = mongoConnection.collection('babies');
+  
+      blogCollection.deleteOne(
+        { "_id" : ObjectId(req.body.id) },
+        function(err, result){
+          if(err){
+            res.status(500).send("Error");
+          }
+          else{
+            res.status(200).send("Success");
+          }
+      });
+    }
+    else{
+      res.status(400).send("Something went wrong");
+    }
+  });
+
 app.get('/bunny/:bunnyid', function (req, res, next) {
     mongoConnection.collection('babies').find({_id: mongodb.ObjectID(req.params.bunnyid)}).toArray(function(err, docs) {
     if (err) {

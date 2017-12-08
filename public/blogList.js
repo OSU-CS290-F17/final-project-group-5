@@ -19,7 +19,8 @@ function resetInputs(){
 }
 
 function handleDeletePost(event){
-    
+    var result = confirm("Want to delete this blog post?");
+    if (result) { 
     var postToDelete = event.currentTarget.parentNode;
     
     var deleteRequest = new XMLHttpRequest();
@@ -46,7 +47,7 @@ function handleDeletePost(event){
     });
 
     deleteRequest.send(requestBody);
-
+    }
 }
 
 function handleBlogAccept(){
