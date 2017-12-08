@@ -109,7 +109,7 @@ section {
 }
 .post-image-container img {
   max-width: 300px;
-  max-height: 200px;
+  max-height: 170px;
 }
 .post-info-container {
   display: flex;
