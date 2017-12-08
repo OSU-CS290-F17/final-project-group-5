@@ -1,24 +1,22 @@
-<div class="post">
-  <div class="post-contents">
-    <div>
-      <img src="{{image}}" alt="{{description}}">
-    </div>
-    <div>
-      <a href="#" class="post-title">{{description}}</a> <span class="post-price">${{price}}</span>
-    </div>
-	<div>
-		Father: <a href="/breeder/{{father}}">{{fatherName}}</a>
-	</div>
-	<div>
-		Mother: <a href="/breeder/{{mother}}">{{motherName}}</a>
-	</div>
-	<div>
-		Birthdate: {{birthdate}}
-	</div>
-	<div>
-		<p>
-			{{longDescription}}
-		</p>
-	</div>
+<div class="detail">
+  <div class="detail-image-container">
+    <img class="detail-image" src="{{image}}" alt="{{description}}">
+  </div>
+  <div class="detail-info-container">
+    <a href="#" class="post-title">{{description}}</a> <span class="post-price">${{price}}</span>
+  </div>
+  <div class="detail-info-container">
+  	<p>Father: <a href="/breeder/{{father}}">{{fatherName}}</a></p>
+  </div>
+  <div class="detail-info-container">
+  	<p>Mother: <a href="/breeder/{{mother}}">{{motherName}}</a></p>
+  </div>
+  <div class="detail-info-container">
+  	<p>Birthdate: {{birthdate}}</p>
+  </div>
+  <div class="detail-info-container">
+  	<p class="longdescription">
+      {{longDescription}}
+  	</p>
   </div>
 </div>

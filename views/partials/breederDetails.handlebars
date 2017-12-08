@@ -1,35 +1,35 @@
-<div class="post">
-  <div class="post-contents">
-    <div>
-      <img src="{{image}}" alt="{{name}}">
-    </div>
-    <div>
-      <strong>{{name}}</strong>
-    </div>
-	  {{#if birthdate}}
-	    <div>
-          Birthdate: {{birthdate}}
-	    </div>
-	  {{/if}}
-	  {{#if father}}
-        <div>
-          Father: <a href="/breeder/{{father}}">{{fatherName}}</a>
-        </div>
-      {{/if}}
-	  {{#if mother}}
-        <div>
-          Mother: <a href="/breeder/{{mother}}">{{motherName}}</a>
-        </div>
-      {{/if}}
-	  {{#if breed}}
-        <div>
-          Breed: {{breed}}</a>
-        </div>
-      {{/if}}
-	  {{#if longDescription}}
-        <p>
-          {{longDescription}}</a>
-        </p>
-      {{/if}}
+<div class="detail">
+  <div class="detail-image-container">
+    <img class="detail-image" src="{{image}}" alt="{{name}}">
   </div>
+  <div class="detail-info-container">
+    <strong>{{name}}</strong>
+  </div>
+    {{#if birthdate}}
+      <div class="detail-info-container">
+        <p>Birthdate: {{birthdate}}</p>
+      </div>
+    {{/if}}
+    {{#if father}}
+      <div class="detail-info-container">
+        <p>Father: <a href="/breeder/{{father}}">{{fatherName}}</a></p>
+      </div>
+    {{/if}}
+    {{#if mother}}
+      <div class="detail-info-container">
+        <p>Mother: <a href="/breeder/{{mother}}">{{motherName}}</a></p>
+      </div>
+    {{/if}}
+    {{#if breed}}
+      <div class="detail-info-container">
+        <p>Breed: {{breed}}</a></p>
+      </div>
+    {{/if}}
+    {{#if longDescription}}
+      <div class="detail-info-container">
+          <p class="longdescription">
+          {{longDescription}}
+          </p>
+      </div>
+    {{/if}}
 </div>

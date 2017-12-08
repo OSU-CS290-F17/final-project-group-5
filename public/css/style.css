@@ -193,4 +193,26 @@ footer {
   color: white;
   text-decoration: none;
 }
-
+.detail {
+  display: flex;
+  flex-direction: column;
+  border: 5px solid;
+  border-radius: 20px;
+  border-color: #555555;
+  background-color: #cccccc;
+  margin: 20px;
+}
+.detail > * {
+  text-align: center;
+}
+.detail-info-container > * {
+  font-size: 2em;
+  margin: 20px;
+}
+.detail-image {
+  max-width: 60%;
+  border: 2px solid;
+  border-color: #9999ff;
+  border-radius: 10px;
+  margin: 20px;
+}
