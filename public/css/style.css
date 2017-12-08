@@ -193,6 +193,14 @@ footer {
   color: white;
   text-decoration: none;
 }
+.fa-envelope-o {
+  font-size: 15px;
+  color: white;
+}
+.fa-phone {
+  color: white;
+  font-size: 15px;
+}
 .detail {
   display: flex;
   flex-direction: column;
@@ -232,6 +240,7 @@ footer {
 .bunny-edit-footer {
   text-align: center;
 }
+
 #delete-bunny-button {
   border-radius: 15px;
   border: solid 2px;
@@ -240,3 +249,4 @@ footer {
   font-size: 2em;
   background-color: #ff9999;
 }
+
