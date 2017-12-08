@@ -187,5 +187,12 @@ footer {
   margin-top: 10px;
   color: white;
   text-decoration: none;
-
+}
+.fa-envelope-o {
+  font-size: 15px;
+  color: white;
+}
+.fa-phone {
+  color: white;
+  font-size: 15px;
 }
