@@ -5,6 +5,7 @@ function handleInfantAccept(){
   var image       = document.querySelectorAll('[name=image]')[0];
   var shortdescription = document.querySelectorAll('[name=short-description]')[0];
   var longdescription = document.querySelectorAll('[name=long-description]')[0];
+  var available   = document.querySelectorAll('[name=available]')[0];
   var mother      = document.querySelectorAll('[name=mother]')[0];
   var father      = document.querySelectorAll('[name=father]')[0];
 
@@ -27,7 +28,8 @@ function handleInfantAccept(){
       shortdescription: shortdescription.value,
       longdescription: longdescription.value,
       mother: mother.value,
-      father: father.value
+      father: father.value,
+      available: available.value
     };
 
     var requestBody = JSON.stringify(bunObj);

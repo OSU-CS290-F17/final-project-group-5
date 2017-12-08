@@ -53,7 +53,7 @@ app.delete('/breeder/:bunnyid', function(req, res){
     console.log(req.body.id)
     if(req.body && req.body.id){
       var blogCollection = mongoConnection.collection('breeders');
-  
+
       blogCollection.deleteOne(
         { "_id" : ObjectId(req.body.id) },
         function(err, result){
@@ -74,7 +74,7 @@ app.delete('/bunny/:bunnyid', function(req, res){
     console.log(req.body.id)
     if(req.body && req.body.id){
       var blogCollection = mongoConnection.collection('babies');
-  
+
       blogCollection.deleteOne(
         { "_id" : ObjectId(req.body.id) },
         function(err, result){
@@ -271,6 +271,7 @@ app.post('/addInfant', function(req, res){
     console.log("== longdescription:", req.body.longdescription);
     console.log("== mother:", req.body.mother);
     console.log("== father:", req.body.father);
+    console.log("== available:", req.body.available);
 
     var infantCollection = mongoConnection.collection('babies');
 
@@ -283,7 +284,32 @@ app.post('/addInfant', function(req, res){
         longDescription: req.body.longdescription,
         mother: req.body.mother,
         father: req.body.father,
+        available: req.body.available
       },
+      function(err, result){
+        if(err){
+          res.status(500).send("Error");
+        }
+        else{
+          res.status(200).send("Success");
+        }
+      }
+    );
+  }
+  else{
+    res.status(400).send("Request body needs all fields");
+  }
+});
+
+app.post('/buyBunny', function(req, res){
+
+  if (req.body && req.body.id) {
+    console.log("== Client bought an infant:");
+    console.log("== id:", req.body.id);
+
+    var infantCollection = mongoConnection.collection('babies');
+
+    infantCollection.findAndModify({_id: ObjectId(req.body.id) }, [['_id','asc']], {$set: {available: false}},
       function(err, result){
         if(err){
           res.status(500).send("Error");
