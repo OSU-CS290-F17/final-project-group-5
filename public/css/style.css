@@ -229,3 +229,6 @@ footer {
 #bunny-long-input {
   min-height: 300px;
 }
+.bunny-edit-footer {
+  text-align: center;
+}
