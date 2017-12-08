@@ -62,9 +62,9 @@ app.get('/bunny/:bunnyid', function (req, res, next) {
     console.log("Found " + docs.length + " babies.");
     res.status(200).render('bunnyDets', {
       title: "Tiffany's Lops",
-      price: docs[bun].price,
-      image: docs[bun].image,
-      description: docs[bun].longDescription,
+      price: docs[0].price,
+      image: docs[0].image,
+      description: docs[0].longDescription,
      });
   });
 });
@@ -95,8 +95,8 @@ app.get('/breeder/:bunnyid', function(req, res, next) {
 		console.log("Found " + docs.length + " breeders");
 		res.status(200).render('breederDets', {
 			title: "Tiffany's Lops",
-			image: docs[bun].image,
-			name: docs[bun].name
+			image: docs[0].image,
+			name: docs[0].name
 		});
 	});
 });
@@ -132,7 +132,7 @@ app.delete('/blog', function(req, res){
   if(req.body && req.body.id){
     var blogCollection = mongoConnection.collection('blogPosts');
 
-    blogCollection.deleteOne( 
+    blogCollection.deleteOne(
       { "_id" : ObjectId(req.body.id) },
       function(err, result){
         if(err){
@@ -144,20 +144,20 @@ app.delete('/blog', function(req, res){
     });
   }
   else{
-    res.status(400).send("Something went wrong");    
+    res.status(400).send("Something went wrong");
   }
 });
 
 app.post('/blog', function(req, res){
-  
+
     if(req.body && req.body.blogTitle && req.body.blogBody && req.body.blogDate){
       console.log("== Client added a blog post containing:");
       console.log("== title:", req.body.blogTitle);
       console.log("== info:", req.body.blogBody);
       console.log("== date:", req.body.blogDate);
-  
+
       var blogCollection = mongoConnection.collection('blogPosts');
-    
+
       blogCollection.insertOne(
         {date: req.body.blogDate,
         info: req.body.blogBody,
@@ -172,7 +172,7 @@ app.post('/blog', function(req, res){
           }
         }
       );
-    } 
+    }
     else{
     res.status(400).send("Request body needs all fields");
     }
