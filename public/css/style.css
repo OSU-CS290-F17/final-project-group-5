@@ -191,6 +191,10 @@ footer {
 #footer {
   margin-top: 10px;
   color: white;
+
+}
+#foot-text{
+  color: white;
   text-decoration: none;
 }
 .fa-envelope-o {
@@ -250,3 +254,21 @@ footer {
   background-color: #ff9999;
 }
 
+.bunny-edit-container {
+  background-color: #F4F6F7;
+  border-radius: 15px;
+  margin: 60px;
+  padding: 30px;
+}
+#bunny-short-input {
+  border-radius: 5px;
+  padding: 5px;
+}
+#bunny-long-input {
+  border-radius: 5px;
+  padding: 10px;
+}
+.bunny-edit-footer {
+  margin-top: 10px;
+
+}
