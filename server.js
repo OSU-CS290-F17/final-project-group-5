@@ -5,7 +5,7 @@ var express = require('express');
 var exphbs  = require('express-handlebars');
 var app = express();
 var port = process.env.PORT || 3000;
-
+var mongodb = require('mongodb');
 var mongoClient = require('mongodb').MongoClient;
 var mongoURL = process.env.MONGO_URL || 'mongodb://cs290_frederij:apple@classmongo.engr.oregonstate.edu/cs290_frederij';
 var mongoConnection;
@@ -38,7 +38,6 @@ app.get('/', function (req, res) {
     if (err) {
       res.status(500).send('MongoDB failure!');
     }
-
     console.log("Found " + docs.length + " babies.");
     res.status(200).render('index', {
       title: "Tiffany's Lops",
@@ -48,22 +47,55 @@ app.get('/', function (req, res) {
 });
 
 app.get('/bunny/:bunnyid', function (req, res, next) {
-  mongoConnection.collection('babies').find({}).toArray(function(err, docs) {
+    mongoConnection.collection('babies').find({_id: mongodb.ObjectID(req.params.bunnyid)}).toArray(function(err, docs) {
     if (err) {
       res.status(500).content('MongoDB failure!');
     }
 
-    if (!(docs[req.params.bunnyid])) {
+    if (!(docs[0])) {
       next();
       return;
     }
-
     console.log("Found " + docs.length + " babies.");
-    res.status(200).render('index', {
+    res.status(200).render('bunnyDets', {
       title: "Tiffany's Lops",
-      posts: [docs[req.params.bunnyid]]
-    });
+      price: docs[bun].price,
+      image: docs[bun].image,
+      description: docs[bun].longDescription,
+     });
   });
+});
+
+app.get('/breeder/', function(req, res, next) {
+    mongoConnection.collection('breeders').find({}).toArray(function(err, docs){
+        if(err) {
+            res.status(500).content('MongoDB failure!');
+	}
+	console.log("Found " + docs.length + " breeders.");
+	res.status(200).render('breeders', {
+	    title: "Tiffany's Lops",
+	    posts: docs
+      	});
+    });
+});
+
+app.get('/breeder/:bunnyid', function(req, res, next) {
+	mongoConnection.collection('breeders').find({_id: mongodb.ObjectID(req.params.bunnyid)}).toArray(function(err, docs){
+		if(err) {
+			res.status(500).content('MongoDB failure!');
+		}
+		if(!(docs[0])){
+			next();
+			return;
+		}
+
+		console.log("Found " + docs.length + " breeders");
+		res.status(200).render('breederDets', {
+			title: "Tiffany's Lops",
+			image: docs[bun].image,
+			name: docs[bun].name
+		});
+	});
 });
 
 app.get('/faq/', function (req, res) {
