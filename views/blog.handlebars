@@ -1,10 +1,30 @@
 <main id="main-container">
     <h1 id="page-title">Ayyy look it's a blog!</h1>
-    <section class="blog"></section>
+    <section class="blog">
 
         {{#each bloggers}}
             {{> blogpost}}
         {{/each}}
+
+    </section>
+    <section class="blog-edit-container">
+        <h4 class="blog-edit-title">Edit Blog</h4>
+        <div class="blog-text-input">
+            <label for="blog-title-input">Title:</label>
+            <textarea name="title" id="blog-title-input"></textarea>
+        </div>
+        <div class="blog-text-input">
+            <label for="blog-date-input">Date:</label>
+            <textarea name="date" id="blog-date-input"></textarea>
+        </div>
+        <div class="blog-text-input">
+            <label for="blog-body-input">Body:</label>
+            <textarea name="body" id="blog-body-input"></textarea>
+        </div>
+        <div class="blog-edit-footer">
+          <button type="button" id="blog-cancel">Cancel</button>
+          <button type="button" id="blog-accept">Create Blog Post</button>
+        </div>
 
     </section>
 </main>

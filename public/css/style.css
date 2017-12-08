@@ -139,3 +139,36 @@ section {
   border-radius: 20px;
   background-color: rgb(244, 246, 247);
 }
+.blog-edit-container {
+  max-width: 400px;
+  margin: 30px;
+  padding: 10px;
+  border: 1px solid rgba(0,0,0,.5);
+  border-radius: 20px;
+  background-color: rgb(244, 246, 247);
+}
+.blog-text-input {
+  margin: 15px;
+}
+#blog-body-input {
+  display: block;
+  height: 150px;
+  width: 300px;
+  border-radius: 5px;
+}
+#blog-title-input {
+  display: block;
+  align-items: center;
+  border-radius: 5px;
+  resize: none;
+}
+#blog-date-input {
+  display: block;
+  align-items: center;
+  border-radius: 5px;
+  resize: none;
+}
+.delete-blog-post{
+  display: block;
+  border-radius: 5px;
+}
